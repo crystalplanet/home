@@ -2,6 +2,7 @@
   (:require-macros [reagent.ratom :refer [reaction]])
   (:require [reagent.core :as reagent :refer [atom]]
             [re-frame.core :as rf]
+            [goog.string :as gstring]
             [home.routes :as routes]))
 
 (rf/register-handler
@@ -18,7 +19,9 @@
                        :acejump
                        :identicons
                        :redshift]}
-     :section-names {:besidesprogramming "besidesprogramming"
+     :section-names {:besidesprogramming (clojure.core/str "besides"
+                                                           (gstring/unescapeEntities "&#8203;")
+                                                           "programming")
                      :brainly "brainly"
                      :acejump "acejump"
                      :identicons "identicons"
@@ -32,12 +35,14 @@
     (let [is-home (= page-name "home")
           is-page (some #(= page-name %) (vals (:pages db)))]
       (if (or is-home is-page)
-          (-> db
-            (assoc :show-navigation is-home)
-            (assoc :current-page (if is-page
-                                     (clojure.core/keyword page-name)
-                                     (:current-page db)))
-            (assoc :current-section nil))
+          (let []
+            (.scrollTo js/window 0 0)
+            (-> db
+              (assoc :show-navigation is-home)
+              (assoc :current-page (if is-page
+                                       (clojure.core/keyword page-name)
+                                       (:current-page db)))
+              (assoc :current-section nil)))
           (let []
             (routes/navigate! "/" "")
             db)))))

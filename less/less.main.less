@@ -4,11 +4,16 @@
 @font-stack:    Helvetica, sans-serif;
 @primary-color: #333;
 
+@phone-wide: ~"only screen and (min-width: 380px)";
+@tablet: ~"only screen and (min-width: 570px)";
+@tablet-wide: ~"only screen and (min-width: 768px)";
+@desktop: ~"only screen and (min-width: 1200px)";
+
 * {
-  text-decoration: none;
   margin: 0;
-  padding: 0;
   outline: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
 div {
@@ -16,156 +21,203 @@ div {
 }
 
 html {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 
 body {
-  font: 100% @header;
   color: @primary-color;
-  width: 100%;
+  font: 100% @header;
   height: 100%;
   overflow-x: hidden;
+  width: 100%;
 }
 
 a, button {
   cursor: pointer;
 }
 
-.page-header {
+.g400 {
+  font-family: @header;
+}
+
+.g700 {
+  font-family: @header-bold;
+}
+
+.app {
+  margin: 0;
+  min-height: 100%;
+  padding: 30px 20px 0;
   position: relative;
-  font-size: 80px;
+  width: 100%;
+
+  @media @tablet {
+    padding: 50px 50px 0;
+  }
+
+  @media @desktop {
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 120px 0;
+  }
+}
+
+.pages {
+  position: relative;
+  width: 100%;
+}
+
+.page {
+  max-width: 500px;
+  opacity: 1;
+  padding: 0 0 30px 30px;
+  position: absolute;
+  transition: transform .5s, opacity .5s, visibility .5s;
+  visibility: visible;
+  width: 100%;
+
+  @media @tablet {
+    padding: 0 0 50px 50px;
+  }
+
+  @media @tablet-wide {
+    max-width: 750px;
+  }
+
+  @media @desktop {
+    max-width: 100%;
+    padding: 0 25px 50px 70px;
+  }
+}
+
+.page--left {
+  opacity: 0;
+  transform: translateX(-50%);
+  visibility: hidden;
+}
+
+.page--back {
+  opacity: 0;
+  transform: perspective(500px) translateZ(-300px);
+  visibility: hidden;
+}
+
+.page-header {
   color: #111;
+  font-size: 36px;
+  margin-bottom: 30px;
+  position: relative;
+
+  @media @tablet {
+    font-size: 60px;
+    margin-bottom: 60px;
+  }
+
+  @media @desktop {
+    font-size: 80px;
+    margin-bottom: 0;
+  }
 
   &::before {
     content: "#";
     display: block;
-    left: -64px;
-    position: absolute;
     font-family: @header-bold;
+    left: -26px;
+    position: absolute;
+
+    @media @tablet {
+      left: -45px;
+    }
+
+    @media @desktop {
+      left: -64px;
+    }
   }
 }
 
 .page-header__link {
   color: #111;
+  z-index: 100;
 }
 
 .page-header--end {
-  font-size: 62px;
+  font-size: 28px;
+  left: 110px;
   margin: 0 0 0 39px;
-  position: relative;
+  position: absolute;
+  top: 37px;
+
+  @media @phone-wide {
+    left: 170px;
+  }
+
+  @media @tablet {
+    font-size: 50px;
+    left: 230px;
+    top: 58px;
+  }
+
+  @media @tablet-wide {
+    left: 330px;
+  }
+
+  @media @desktop {
+    font-size: 62px;
+    left: initial;
+    position: relative;
+    top: initial;
+  }
 
   &::before {
     content: "/";
-    font-size: 170%;
     display: block;
+    font-size: 120%;
+    left: -11px;
     line-height: 80px;
     position: absolute;
-    left: -32px;
-    top: -15px;
+    top: -20px;
+
+    @media @tablet {
+      font-size: 120%;
+      left: -18px;
+      top: -4px;
+    }
+
+    @media @desktop {
+      left: -32px;
+      top: -15px;
+    }
   }
-}
-
-.btn--back {
-  font-family: @header;
-  position: relative;
-  font-size: 62px;
-  color: #bbb;
-
-  &::before {
-    content: ">";
-    display: block;
-    font-size: 130%;
-    position: absolute;
-    left: -45px;
-    top: -28px;
-  }
-}
-
-.app {
-  width: 100%;
-  position: relative;
-  min-height: 100%;
-  margin: 0 auto;
-  padding: 50px 0 0;
-}
-
-.pages {
-  width: 100%;
-  position: relative;
-}
-
-.page {
-  width: 100%;
-  padding: 0 25px 50px 70px;
-  position: absolute;
-  visibility: visible;
-  opacity: 1;
-  transition: transform .5s, opacity .5s, visibility .5s;
-}
-
-.page--left {
-  visibility: hidden;
-  opacity: 0;
-  transform: translateX(-50%);
-}
-
-.page--back {
-  visibility: hidden;
-  opacity: 0;
-  transform: perspective(500px) translateZ(-300px);
-}
-
-.nav {
-  list-style-type: none;
-  overflow: hidden;
-}
-
-.nav__item {
-  overflow: hidden;
-}
-
-.nav__link {
-  display: inline-block;
-  font-size: 60px;
-  line-height: 60px;
-  margin-bottom: 20px;
-  color: #111;
-  float: left;
-  clear: left;
-}
-
-.social {
-  display: block;
-  margin: 30px 0 0;
-}
-
-.social__link {
-  display: inline-block;
-  margin: 0 30px 0 0;
-  color: #111;
-  font-size: 35px;
-}
-
-.social__link:last-child {
-  margin-right: 0;
 }
 
 .section-header {
-  display: block;
-  font-size: 60px;
-  line-height: 60px;
-  margin-bottom: 20px;
-  color: #111;
-
-  border: 0;
   background: transparent;
+  border: 0;
+  color: #111;
+  display: block;
+  font-size: 28px;
+  line-height: 26px;
+  margin-bottom: 12px;
+  text-align: left;
+
+  @media @tablet {
+    font-size: 48px;
+    line-height: 48px;
+    margin-bottom: 17px;
+  }
+
+  @media @desktop {
+    font-size: 60px;
+    line-height: 60px;
+    margin-bottom: 20px;
+  }
 }
 
 /* TODO: ensure the height is minimal for whatever content there is to display. */
 .section-content {
-  overflow-y: hidden;
   max-height: 300px;
+  overflow-y: hidden;
   transition: max-height .5s;
 }
 
@@ -181,23 +233,97 @@ a, button {
   max-height: 0;
 }
 
-.g400 {
-  font-family: @header;
+.nav {
+  list-style-type: none;
+  overflow: hidden;
 }
 
-.g700 {
-  font-family: @header-bold;
+.nav__item {
+  overflow: hidden;
 }
 
-@media screen and (min-width: 570px) {
-  .app {
-    padding: 100px 30px 100px 80px;
+.nav__link {
+  clear: left;
+  color: #111;
+  display: inline-block;
+  float: left;
+  font-size: 28px;
+  line-height: 28px;
+  margin-bottom: 10px;
+
+  @media @tablet {
+    font-size: 48px;
+    line-height: 48px;
+    margin-bottom: 17px;
+  }
+
+  @media @desktop {
+    font-size: 60px;
+    line-height: 60px;
+    margin-bottom: 20px;
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .app {
-    max-width: 1000px;
-    padding: 120px;
+.social {
+  display: block;
+  margin: 10px 0 0;
+
+  @media @tablet {
+    margin: 30px 0 0;
+  }
+}
+
+.social__link {
+  color: #111;
+  display: inline-block;
+  font-size: 20px;
+  margin: 0 18px 0 0;
+
+  @media @tablet {
+    font-size: 30px;
+    margin: 0 25px 0 0;
+  }
+
+  @media @desktop {
+    font-size: 35px;
+    margin: 0 30px 0 0;
+  }
+}
+
+.social__link:last-child {
+  margin-right: 0;
+}
+
+.btn--back {
+  color: #bbb;
+  font-family: @header;
+  font-size: 28px;
+  position: relative;
+
+  @media @tablet {
+    font-size: 50px;
+  }
+
+  @media @desktop {
+    font-size: 62px;
+  }
+
+  &::before {
+    content: ">";
+    display: block;
+    font-size: 130%;
+    left: -18px;
+    position: absolute;
+    top: -15px;
+
+    @media @tablet {
+      left: -36px;
+      top: -24px;
+    }
+
+    @media @desktop {
+      left: -45px;
+      top: -28px;
+    }
   }
 }
