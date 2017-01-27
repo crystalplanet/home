@@ -19,16 +19,12 @@
 (defmethod pages :default [] [:div])
 
 (defn page-header
-  ([] [:h2.page-header.g400
-        [:a.page-header__link
-          {:href "/"}
-          [:span.g700 "crystalplanet"]]])
-
+  ([] (page-header nil))
   ([page] [:h2.page-header.g400
-            [:a.page-header__link
+            [:a.page-header__main
               {:href "/"}
               [:span.g700 "crystalplanet"]]
-            [:span.page-header--end page]]))
+            (when page [:span.page-header__sub page])]))
 
 (defn home-page []
   [:div.page.page--slide
