@@ -70,11 +70,9 @@ a, button {
 
 .page {
   max-width: 500px;
-  opacity: 1;
   padding: 0 0 30px 30px;
   position: absolute;
   transition: transform .5s, opacity .5s, visibility .5s;
-  visibility: visible;
   width: 100%;
 
   @media @tablet {
@@ -91,13 +89,25 @@ a, button {
   }
 }
 
-.page--left {
-  opacity: 0;
-  transform: translateX(-50%);
-  visibility: hidden;
+.page--slide, .page--slide.page--slide-enter-active {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
 }
 
-.page--back {
+.page--slide-enter, .page--slide.page--slide-leave {
+    opacity: 0;
+    transform: translateX(-50%);
+    visibility: hidden;
+}
+
+.page--pop, .page--pop.page--pop-enter-active {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.page--pop-enter, .page--pop.page--pop-leave {
   opacity: 0;
   transform: perspective(500px) translateZ(-300px);
   visibility: hidden;
@@ -221,7 +231,7 @@ a, button {
   transition: max-height .5s;
 }
 
-.section-content-enter {
+.section-content-enter, .section-content-leave {
   max-height: 0;
 }
 
@@ -229,8 +239,8 @@ a, button {
   max-height: 300px;
 }
 
-.section-content-leave {
-  max-height: 0;
+.content {
+  margin: 0 0 20px;
 }
 
 .nav {

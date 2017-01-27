@@ -3,14 +3,23 @@
             [re-frame.core :as rf]
             [home.routes]
             [home.core]
+            [home.components :refer [css-transition-group]]
             [home.pages :as pages]))
 
 (defn app []
   (let [show-navigation (rf/subscribe [:show-navigation])]
     (fn []
       [:div.pages
-        [pages/home-page @show-navigation]
-        [pages/page (not @show-navigation)]])))
+        [css-transition-group
+          {:transition-name "page--slide"
+           :transition-leave-timeout 501
+           :transition-enter-timeout 1}
+          (when @show-navigation [pages/home-page])]
+        [css-transition-group
+          {:transition-name "page--pop"
+           :transition-leave-timeout 501
+           :transition-enter-timeout 1}
+          (when-not @show-navigation [pages/page])]])))
 
 (defn init []
   (reagent/render-component [app]

@@ -30,18 +30,16 @@
               [:span.g700 "crystalplanet"]]
             [:span.page-header--end page]]))
 
-(defn home-page [visible]
-  [:div.page
-    {:class (when (not visible) "page--left")}
+(defn home-page []
+  [:div.page.page--slide
     [page-header]
     [navigation]
     [social]])
 
-(defn page [visible]
+(defn page []
   (let [current-page (rf/subscribe [:current-page])]
-    (fn [visible]
-      [:div.page
-        {:class (when (not visible) "page--back")}
+    (fn []
+      [:div.page.page--pop
         [page-header (:name @current-page)]
         [pages (:key @current-page)]
         (map #(with-meta [sections/section %] {:key (peek %)}) (:sections @current-page))
