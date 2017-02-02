@@ -224,23 +224,105 @@ a, button {
   }
 }
 
-/* TODO: ensure the height is minimal for whatever content there is to display. */
 .section-content {
-  max-height: 300px;
+  max-height: 0;
   overflow-y: hidden;
   transition: max-height .5s;
 }
 
-.section-content-enter, .section-content-leave {
+.section--brainly-enter-active {
+  max-height: 465px;
+
+  @media @phone-wide {
+    max-height: 390px;
+  }
+
+  @media @tablet {
+    max-height: 290px;
+  }
+
+  @media @tablet-wide {
+    max-height: 215px;
+  }
+
+  @media @desktop {
+    max-height: 165px;
+  }
+}
+
+.section--acejump-enter-active {
+  max-height: 415px;
+
+  @media @phone-wide {
+    max-height: 340px;
+  }
+
+  @media @tablet {
+    max-height: 265px;
+  }
+
+  @media @tablet-wide {
+    max-height: 215px;
+  }
+
+  @media @desktop {
+    max-height: 165px;
+  }
+}
+
+.section--identicons-enter-active {
+  max-height: 585px;
+
+  @media @phone-wide {
+    max-height: 510px;
+  }
+
+  @media @tablet {
+    max-height: 385px;
+  }
+
+  @media @tablet-wide {
+    max-height: 285px;
+  }
+
+  @media @desktop {
+    max-height: 235px;
+  }
+}
+
+.section--redshift-enter-active {
+  max-height: 605px;
+
+  @media @phone-wide {
+    max-height: 505px;
+  }
+
+  @media @tablet {
+    max-height: 380px;
+  }
+
+  @media @tablet-wide {
+    max-height: 305px;
+  }
+
+  @media @desktop {
+    max-height: 255px;
+  }
+}
+
+.section--brainly-enter, .section--brainly-leave,
+.section--acejump-enter, .section--acejump-leave,
+.section--identicons-enter, .section--identicons-leave,
+.section--redshift-enter, .section--redshift-leave {
   max-height: 0;
 }
 
-.section-content.seaction-content-enter-active {
-  max-height: 300px;
+.content__text {
+  margin: 0 0 20px;
 }
 
-.content {
-  margin: 0 0 20px;
+.content__text a {
+    color: #00a9ff;
 }
 
 .nav {

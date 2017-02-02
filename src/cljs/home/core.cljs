@@ -14,7 +14,8 @@
              :about "about"
              :contact "contact"}
      :current-section nil
-     :sections {:work [:besidesprogramming
+     :sections {:work [
+                       ; :besidesprogramming
                        :brainly
                        :acejump
                        :identicons
