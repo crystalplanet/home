@@ -30,6 +30,4 @@
     [social-link "fa-stack-overflow" "https://stackoverflow.com/users/4782314/kuba-birecki"]])
 
 (defn back-button []
-  [:a.btn.btn--back
-    {:href "/"}
-    "back"])
+  [:a.btn.btn--back {:href "/"} "back"])
