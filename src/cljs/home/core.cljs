@@ -20,33 +20,32 @@
                        :acejump
                        :identicons
                        :redshift]}
-     :section-names {:besidesprogramming (clojure.core/str "besides"
-                                                           (gstring/unescapeEntities "&#8203;")
-                                                           "programming")
+     :section-names {:besidesprogramming (str "besides"
+                                              (gstring/unescapeEntities "&#8203;")
+                                              "programming")
                      :brainly "brainly"
                      :acejump "acejump"
                      :identicons "identicons"
                      :redshift "redshift"}}))
 
-
-;; move navigate call here
 (rf/register-handler
   :load-page
   (fn [db [_ page-name]]
     (let [is-home (= page-name "home")
           is-page (some #(= page-name %) (vals (:pages db)))]
       (if (or is-home is-page)
-          (let []
-            (.scrollTo js/window 0 0)
-            (-> db
-              (assoc :show-navigation is-home)
-              (assoc :current-page (if is-page
-                                       (clojure.core/keyword page-name)
-                                       (:current-page db)))
-              (assoc :current-section nil)))
-          (let []
-            (routes/navigate! "/" "")
-            db)))))
+          (rf/dispatch [:open-page (keyword page-name)])
+          (routes/navigate! "/" ""))
+      db)))
+
+(rf/register-handler
+  :open-page
+  (fn [db [_ page]]
+    (.scrollTo js/window 0 0)
+    (-> db
+        (assoc :show-navigation (= page :home))
+        (assoc :current-page page)
+        (assoc :current-section nil))))
 
 (rf/register-handler
   :toggle-section
