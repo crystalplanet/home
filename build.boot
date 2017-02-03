@@ -1,5 +1,5 @@
 (set-env!
- :source-paths    #{"src/cljs" "less"}
+ :source-paths    #{"src/clj" "src/cljs" "less"}
  :resource-paths  #{"resources"}
  :dependencies '[[adzerk/boot-cljs          "1.7.228-2"  :scope "test"]
                  [adzerk/boot-cljs-repl     "0.3.3"      :scope "test"]
@@ -13,6 +13,7 @@
                  [cljsjs/react-with-addons "15.2.1-0"]
                  [re-frame "0.9.1"]
                  [secretary "1.2.3"]
+                 [markdown-clj "0.9.94"]
                  [deraen/boot-less "0.6.0" :scope "test"]])
 
 (require
