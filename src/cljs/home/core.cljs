@@ -44,7 +44,7 @@
     (.scrollTo js/window 0 0)
     (-> db
         (assoc :show-navigation (= page :home))
-        (assoc :current-page page)
+        (assoc :current-page (if (= page :home) (:current-page db) page))
         (assoc :current-section nil))))
 
 (rf/register-handler
