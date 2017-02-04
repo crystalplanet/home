@@ -9,7 +9,7 @@
 (defmethod sections :acejump [] (<-md "content/acejump.md"))
 (defmethod sections :identicons [] (<-md "content/identicons.md"))
 (defmethod sections :redshift [] (<-md "content/redshift.md"))
-(defmethod sections :default [] [:div])
+(defmethod sections :default [] "")
 
 (defn section-header [section name]
   [:button.section-header.g700
