@@ -318,11 +318,49 @@ a, button {
 }
 
 .content p {
+  font-weight: bold;
   margin: 0 0 20px;
 }
 
 .content a {
     color: #00a9ff;
+}
+
+.content strong {
+  font-family: @header-bold;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.contact__text {
+  font-size: 120%;
+
+  @media @tablet {
+    font-size: 155%;
+  }
+
+  @media @desktop {
+    font-size: 170%;
+  }
+}
+
+.contact__twitter {
+  color: #111;
+  font-family: @header-bold;
+  font-size: 200%;
+}
+
+.contact__email {
+  color: #111;
+  font-family: @header-bold;
+
+  @media @tablet {
+    font-size: 150%;
+  }
+
+  @media @desktop {
+    font-size: 200%;
+  }
 }
 
 .nav {
