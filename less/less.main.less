@@ -1,13 +1,26 @@
-@header-bold: "GalanoGrotesque-Bold";
-@header: "GalanoGrotesque-Light";
+@fbold: "galano-bold";
+@fregular: "galano-light";
 
-@font-stack:    Helvetica, sans-serif;
-@primary-color: #333;
+@background: #fff;
+@text: #333;
+@text-light: #bbb;
+@text-dark: #111;
+@text-link: #00a9ff;
 
 @phone-wide: ~"only screen and (min-width: 380px)";
 @tablet: ~"only screen and (min-width: 570px)";
 @tablet-wide: ~"only screen and (min-width: 768px)";
 @desktop: ~"only screen and (min-width: 1200px)";
+
+@font-face {
+  font-family: @fregular;
+  src: url('/fonts/GalanoGrotesqueLight.otf');
+}
+
+@font-face {
+  font-family: @fbold;
+  src: url('/fonts/GalanoGrotesqueBold.otf');
+}
 
 * {
   margin: 0;
@@ -26,8 +39,9 @@ html {
 }
 
 body {
-  color: @primary-color;
-  font: 100% @header;
+  background-color: @background;
+  color: @text;
+  font: 100% @fregular;
   height: 100%;
   overflow-x: hidden;
   width: 100%;
@@ -38,11 +52,11 @@ a, button {
 }
 
 .g400 {
-  font-family: @header;
+  font-family: @fregular;
 }
 
 .g700 {
-  font-family: @header-bold;
+  font-family: @fbold;
 }
 
 .app {
@@ -60,6 +74,101 @@ a, button {
     margin: 0 auto;
     max-width: 1000px;
     padding: 120px 0;
+  }
+}
+
+.nav {
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.nav__item {
+  overflow: hidden;
+}
+
+.nav__link {
+  clear: left;
+  color: @text-dark;
+  display: inline-block;
+  float: left;
+  font-size: 28px;
+  line-height: 28px;
+  margin-bottom: 10px;
+
+  @media @tablet {
+    font-size: 48px;
+    line-height: 48px;
+    margin-bottom: 17px;
+  }
+
+  @media @desktop {
+    font-size: 60px;
+    line-height: 60px;
+    margin-bottom: 20px;
+  }
+}
+
+.social {
+  display: block;
+  margin: 10px 0 0;
+
+  @media @tablet {
+    margin: 30px 0 0;
+  }
+}
+
+.social__link {
+  color: @text-dark;
+  display: inline-block;
+  font-size: 20px;
+  margin: 0 18px 0 0;
+
+  @media @tablet {
+    font-size: 30px;
+    margin: 0 25px 0 0;
+  }
+
+  @media @desktop {
+    font-size: 35px;
+    margin: 0 30px 0 0;
+  }
+}
+
+.social__link:last-child {
+  margin-right: 0;
+}
+
+.btn--back {
+  color: @text-light;
+  font-family: @fregular;
+  font-size: 28px;
+  position: relative;
+
+  @media @tablet {
+    font-size: 50px;
+  }
+
+  @media @desktop {
+    font-size: 62px;
+  }
+
+  &::before {
+    content: ">";
+    display: block;
+    font-size: 130%;
+    left: -18px;
+    position: absolute;
+    top: -15px;
+
+    @media @tablet {
+      left: -36px;
+      top: -24px;
+    }
+
+    @media @desktop {
+      left: -45px;
+      top: -28px;
+    }
   }
 }
 
@@ -114,7 +223,7 @@ a, button {
 }
 
 .page-header {
-  color: #111;
+  color: @text-dark;
   font-size: 36px;
   margin-bottom: 30px;
   position: relative;
@@ -132,7 +241,7 @@ a, button {
   &::before {
     content: "#";
     display: block;
-    font-family: @header-bold;
+    font-family: @fbold;
     left: -26px;
     position: absolute;
 
@@ -147,7 +256,7 @@ a, button {
 }
 
 .page-header__main {
-  color: #111;
+  color: @text-dark;
   z-index: 100;
 }
 
@@ -204,7 +313,7 @@ a, button {
 .section-header {
   background: transparent;
   border: 0;
-  color: #111;
+  color: @text-dark;
   display: block;
   font-size: 28px;
   line-height: 26px;
@@ -323,16 +432,16 @@ a, button {
 }
 
 .content a {
-    color: #00a9ff;
+    color: @text-link;
 }
 
 .content strong {
-  font-family: @header-bold;
+  font-family: @fbold;
   font-style: normal;
   font-weight: normal;
 }
 
-.contact__text {
+.content .contact__text {
   font-size: 120%;
 
   @media @tablet {
@@ -344,15 +453,15 @@ a, button {
   }
 }
 
-.contact__twitter {
-  color: #111;
-  font-family: @header-bold;
+.content .contact__twitter {
+  color: @text-dark;
+  font-family: @fbold;
   font-size: 200%;
 }
 
-.contact__email {
-  color: #111;
-  font-family: @header-bold;
+.content .contact__email {
+  color: @text-dark;
+  font-family: @fbold;
 
   @media @tablet {
     font-size: 150%;
@@ -363,97 +472,3 @@ a, button {
   }
 }
 
-.nav {
-  list-style-type: none;
-  overflow: hidden;
-}
-
-.nav__item {
-  overflow: hidden;
-}
-
-.nav__link {
-  clear: left;
-  color: #111;
-  display: inline-block;
-  float: left;
-  font-size: 28px;
-  line-height: 28px;
-  margin-bottom: 10px;
-
-  @media @tablet {
-    font-size: 48px;
-    line-height: 48px;
-    margin-bottom: 17px;
-  }
-
-  @media @desktop {
-    font-size: 60px;
-    line-height: 60px;
-    margin-bottom: 20px;
-  }
-}
-
-.social {
-  display: block;
-  margin: 10px 0 0;
-
-  @media @tablet {
-    margin: 30px 0 0;
-  }
-}
-
-.social__link {
-  color: #111;
-  display: inline-block;
-  font-size: 20px;
-  margin: 0 18px 0 0;
-
-  @media @tablet {
-    font-size: 30px;
-    margin: 0 25px 0 0;
-  }
-
-  @media @desktop {
-    font-size: 35px;
-    margin: 0 30px 0 0;
-  }
-}
-
-.social__link:last-child {
-  margin-right: 0;
-}
-
-.btn--back {
-  color: #bbb;
-  font-family: @header;
-  font-size: 28px;
-  position: relative;
-
-  @media @tablet {
-    font-size: 50px;
-  }
-
-  @media @desktop {
-    font-size: 62px;
-  }
-
-  &::before {
-    content: ">";
-    display: block;
-    font-size: 130%;
-    left: -18px;
-    position: absolute;
-    top: -15px;
-
-    @media @tablet {
-      left: -36px;
-      top: -24px;
-    }
-
-    @media @desktop {
-      left: -45px;
-      top: -28px;
-    }
-  }
-}
