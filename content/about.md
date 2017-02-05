@@ -1,5 +1,5 @@
 Hi! My name is **Kuba Birecki** and I'm a **software engineer**, **writer** and a **world citizen**.  
-**\#crystalplanet** is my very own little place in the vastness of internet.
+**\#crystalplanet** is my very own little place in the vastness of the internet.
 
 I've been programming professionaly for the last three years, but I have written code as a hobby for over a decade.  
 **I specialize in web development and rapidly bringing ideas to life**.
