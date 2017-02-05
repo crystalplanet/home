@@ -5,7 +5,7 @@
             [goog.string :as gstring]
             [home.routes :as routes]))
 
-(rf/register-handler
+(rf/reg-event-db
   :init-db
   (fn [_ _]
     {:show-navigation true
@@ -28,7 +28,7 @@
                      :identicons "identicons"
                      :redshift "redshift"}}))
 
-(rf/register-handler
+(rf/reg-event-db
   :load-page
   (fn [db [_ page-name]]
     (let [is-home (= page-name "home")
@@ -38,7 +38,7 @@
           (routes/navigate! "/" ""))
       db)))
 
-(rf/register-handler
+(rf/reg-event-db
   :open-page
   (fn [db [_ page]]
     (.scrollTo js/window 0 0)
@@ -47,17 +47,17 @@
         (assoc :current-page (if (= page :home) (:current-page db) page))
         (assoc :current-section nil))))
 
-(rf/register-handler
+(rf/reg-event-db
   :toggle-section
   (fn [db [_ section]]
     (-> db (assoc :current-section (when-not (= section (:current-section db)) section)))))
 
-(rf/register-sub
+(rf/reg-sub-raw
   :show-navigation
   (fn [db _]
     (reaction (:show-navigation @db))))
 
-(rf/register-sub
+(rf/reg-sub-raw
   :current-page
   (fn [db _]
     (let [page (reaction (:current-page @db))]
@@ -66,7 +66,7 @@
                  :sections (map (fn [s] [s (s (:section-names @db))])
                                 (or (@page (:sections @db))))}))))
 
-(rf/register-sub
+(rf/reg-sub-raw
   :current-section
   (fn [db _]
     (reaction (:current-section @db))))

@@ -29,5 +29,5 @@
       [:div.page.page--pop
         [page-header (:name @current-page)]
         [:div.content {:dangerouslySetInnerHTML {:__html (pages (:key @current-page))}}]
-        (map #(with-meta [sections/section %] {:key (peek %)}) (:sections @current-page))
+        (doall (map #(with-meta [sections/section %] {:key (peek %)}) (:sections @current-page)))
         [back-button]])))
