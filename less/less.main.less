@@ -80,6 +80,15 @@ a, button {
 .nav {
   list-style-type: none;
   overflow: hidden;
+  padding: 0 0 0 30px;
+
+  @media @tablet {
+    padding: 0 0 0 50px
+  }
+
+  @media @desktop {
+    padding: 0 0 0 70px;
+  }
 }
 
 .nav__item {
@@ -111,9 +120,15 @@ a, button {
 .social {
   display: block;
   margin: 10px 0 0;
+  padding: 0 0 0 30px;
 
   @media @tablet {
     margin: 30px 0 0;
+    padding: 0 0 0 50px;
+  }
+
+  @media @desktop {
+    padding: 0 0 0 70px;
   }
 }
 
@@ -153,21 +168,23 @@ a, button {
   }
 
   &::before {
+    box-sizing: border-box;
     content: ">";
-    display: block;
+    display: inline-block;
     font-size: 130%;
-    left: -18px;
-    position: absolute;
-    top: -15px;
+    padding: 0 6px 0 0;
+    text-align: right;
+    vertical-align: middle;
+    width: 30px;
 
     @media @tablet {
-      left: -36px;
-      top: -24px;
+      padding: 0 10px 0 0;
+      width: 50px;
     }
 
     @media @desktop {
-      left: -45px;
-      top: -28px;
+      padding: 0 15px 0 0;
+      width: 70px;
     }
   }
 }
@@ -179,13 +196,13 @@ a, button {
 
 .page {
   max-width: 500px;
-  padding: 0 0 30px 30px;
+  padding: 0 0 30px;
   position: absolute;
   transition: transform .5s, opacity .5s, visibility .5s;
   width: 100%;
 
   @media @tablet {
-    padding: 0 0 50px 50px;
+    padding: 0 0 50px;
   }
 
   @media @tablet-wide {
@@ -194,7 +211,7 @@ a, button {
 
   @media @desktop {
     max-width: 100%;
-    padding: 0 25px 50px 70px;
+    padding: 0 25px 50px 0;
   }
 }
 
@@ -240,17 +257,21 @@ a, button {
 
   &::before {
     content: "#";
-    display: block;
+    display: inline-block;
     font-family: @fbold;
-    left: -26px;
-    position: absolute;
+    padding: 0 5px 0 0;
+    text-align: right;
+    width: 30px;
 
     @media @tablet {
-      left: -45px;
+      padding: 0 5px 0 0;
+      width: 50px;
     }
 
     @media @desktop {
-      left: -64px;
+      box-sizing: border-box;
+      padding: 0 5px 0 0;
+      width: 70px;
     }
   }
 }
@@ -262,51 +283,50 @@ a, button {
 
 .page-header__sub {
   font-size: 28px;
-  left: 110px;
-  margin: 0 0 0 39px;
+  left: 125px;
+  margin: 0 0 0 10px;
   position: absolute;
-  top: 37px;
+  top: 18px;
 
   @media @phone-wide {
-    left: 170px;
+    left: 180px;
   }
 
   @media @tablet {
     font-size: 50px;
-    left: 230px;
+    left: 190px;
     top: 58px;
   }
 
   @media @tablet-wide {
-    left: 330px;
+    left: 335px;
   }
 
   @media @desktop {
     font-size: 62px;
     left: initial;
-    position: relative;
+    position: static;
     top: initial;
   }
 
   &::before {
     content: "/";
-    display: block;
+    display: inline-block;
     font-size: 120%;
-    left: -11px;
     line-height: 80px;
-    position: absolute;
-    top: -20px;
+  }
+}
 
-    @media @tablet {
-      font-size: 120%;
-      left: -18px;
-      top: -4px;
-    }
+.section,
+.page-content {
+  padding: 0 0 0 30px;
 
-    @media @desktop {
-      left: -32px;
-      top: -15px;
-    }
+  @media @tablet {
+    padding: 0 0 0 50px;
+  }
+
+  @media @desktop {
+    padding: 0 0 0 70px;
   }
 }
 

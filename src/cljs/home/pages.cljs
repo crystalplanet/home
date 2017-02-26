@@ -28,6 +28,6 @@
     (fn []
       [:div.page.page--pop
         [page-header (:name @current-page)]
-        [:div.content {:dangerouslySetInnerHTML {:__html (pages (:key @current-page))}}]
+        [:div.page-content.content {:dangerouslySetInnerHTML {:__html (pages (:key @current-page))}}]
         (doall (map #(with-meta [sections/section %] {:key (peek %)}) (:sections @current-page)))
         [back-button]])))

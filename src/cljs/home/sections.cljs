@@ -23,7 +23,7 @@
 (defn section [section]
   (let [current-section (rf/subscribe [:current-section])]
     (fn [[section name]]
-      [:div
+      [:div.section
        [section-header section name]
        [css-transition-group
         {:transition-name (str "section--" name)
