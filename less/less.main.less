@@ -155,16 +155,23 @@ a, button {
 
 .btn--back {
   color: @text-light;
+  display: block;
   font-family: @fregular;
   font-size: 28px;
+  line-height: 28px;
+  margin: 30px 0 0;
   position: relative;
 
   @media @tablet {
     font-size: 50px;
+    line-height: 50px;
+    margin: 40px 0 0;
   }
 
   @media @desktop {
     font-size: 62px;
+    line-height: 62px;
+    margin: 50px 0 0;
   }
 
   &::before {
@@ -174,7 +181,7 @@ a, button {
     font-size: 130%;
     padding: 0 6px 0 0;
     text-align: right;
-    vertical-align: middle;
+    vertical-align: top;
     width: 30px;
 
     @media @tablet {
