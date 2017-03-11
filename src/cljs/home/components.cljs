@@ -18,6 +18,7 @@
 (defn social-link [icon-class url]
   [:a.social__link
     {:href url
+     :rel "noopener"
      :target "_blank"}
     [:i.fa {:class icon-class}]])
 
