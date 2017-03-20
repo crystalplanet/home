@@ -1,5 +1,7 @@
 {
- "name": "#crystalplanet",
+ "name": "crystalplanet",
+ "background_color": "#fff",
+ "theme_color": "#fff",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
