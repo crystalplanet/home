@@ -8,6 +8,6 @@ I've been programming professionaly for the last three years, but I have written
 
 So far, I've had the pleasure to work for the world's largest social-learning network - **Brainly** - and one of Kraków's fastest growing software companies - **Codete**.  
 I consider myself a true full-stack engineer, having done extensive work on both front- and back-end, some light server administration, and I've even been a QA Engineer. I am not afraid to get my hands dirty with some design or UX work as well.  
-**I believe my job is about creating great products that are truly helpful, rather than just spitting out code**.
+**I believe my job is about creating great products and user experiences, rather than just spitting out code**.
 
 As far as the actual code is concerned, **Clojure** - [the language in which this website is written](https://github.com/crystalplanet/home) - is my weapon of choice. I've also done a fair bit of development using **JavaScript** and **PHP**.
