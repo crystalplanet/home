@@ -21,6 +21,13 @@
            :transition-enter-timeout 1}
           (when-not @show-navigation [pages/page])]])))
 
+(defn worker []
+  (when (.-serviceWorker js/navigator)
+        (-> (.-serviceWorker js/navigator)
+            (.register "/service-worker.js")
+            (.then #(.log js/console "Installed service worker.")))))
+
 (defn init []
+  (worker)
   (reagent/render-component [app]
                             (.getElementById js/document "app")))

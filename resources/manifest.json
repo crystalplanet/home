@@ -1,6 +1,8 @@
 {
- "name": "crystalplanet",
+ "name": "Crystal Planet",
+ "short_name": "Crystal Plnt",
  "background_color": "#fff",
+ "display": "browser",
  "theme_color": "#fff",
  "icons": [
   {
