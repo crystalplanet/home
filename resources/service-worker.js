@@ -1,82 +1,53 @@
-var version = 'v1::';
+const version = '2018:01';
 
-self.addEventListener('install', function (event) {
-	event.waitUntil(
-		caches
-			.open(version + 'static')
-			.then(function (cache) {
-				return cache.addAll([
-					'/',
-					'/css/less.css',
-					'/fonts/GalanoGrotesqueBold.otf',
-					'/fonts/GalanoGrotesqueLight.otf',
-					'/js/app.js',
-				]);
-			})
-			.then(function () {
-				console.log('Worker Installed');
-			})
-	);
-});
+const addToCache = (request, response) => {
+	if (!response.ok) {
+		return;
+	}
 
-self.addEventListener('activate', function (event) {
-	event.waitUntil(
-		caches
-			.keys()
-			.then(function (keys) {
-				return Promise.all(
-					keys
-						.filter(function (key) {
-							return !key.startsWith(version);
-						})
-						.map(function (key) {
-							return caches.delete(key);
-						})
-				);
-			})
-			.then(function() {
-				console.log('Worker Updated');
-			})
-	);
-});
+	const copy = response.clone();
+	caches.open(version).then(cache => cache.put(request, copy));
 
-self.addEventListener('fetch', function (event) {
-	// Ignore all but 'GET' requests
+	return response;
+};
+
+self.addEventListener('install', event => event.waitUntil(
+	caches.open(version)
+		.then(cache => cache.addAll([
+			'/',
+			'/css/less.css',
+			'/fonts/GalanoGrotesqueBold.otf',
+			'/fonts/GalanoGrotesqueLight.otf',
+			'/js/app.js',
+		]))
+));
+
+self.addEventListener('fetch', event => {
 	if (event.request.method !== 'GET') {
 		return;
 	}
 
 	event.respondWith(
-		caches
-			.match(event.request)
-			.then(function (cached) {
-				var networked = fetch(event.request)
-					.then(fetchedFromNetwork, unableToResolve)
-					.catch(unableToResolve);
+		caches.match(event.request)
+			.then(cachedResponse => {
+				const networkResponse = fetch(event.request)
+					.then(response => addToCache(event.request, response));
 
-				return cached || networked;
-
-				function fetchedFromNetwork(response) {
-					var cacheCopy = response.clone();
-
-					caches
-						.open(version + 'pages')
-						.then(function (cache) {
-							cache.put(event.request, cacheCopy);
-						});
-
-					return response;
-				}
-
-				function unableToResolve() {
-					return new Response('<h1>Service Unavailable</h1>', {
-						status: 503,
-						statusText: 'Service Unavailable',
-						headers: new Headers({
-							'Content-Type': 'text/html'
-						})
-					});
-				}
+				return cachedResponse || networkResponse;
 			})
-	);
+			.catch(() => new Response('<h1>Service Unavailable</h1>', {
+				status: 503,
+				statusText: 'Service Unavailable',
+				headers: { 'Content-Type': 'text/html' }
+			}))
+		);
 });
+
+self.addEventListener('activate', event => event.waitUntil(
+	caches.keys()
+		.then(keys => Promise.all(
+			keys
+				.filter(key => !key.startsWith(version))
+				.map(key => caches.delete(key))
+		))
+));

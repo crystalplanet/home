@@ -24,8 +24,7 @@
 (defn worker []
   (when (.-serviceWorker js/navigator)
         (-> (.-serviceWorker js/navigator)
-            (.register "/service-worker.js")
-            (.then #(.log js/console "Installed service worker.")))))
+            (.register "/service-worker.js"))))
 
 (defn init []
   (worker)
