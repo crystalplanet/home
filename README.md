@@ -56,9 +56,3 @@ boot production build target
 As you can see, there's really not much to it. Assuming the build goes well, the contents of the ```target``` directory are then uploaded to the server.  
 All of this takes place every time something is pushed to the ```dev``` branch.
 
-### Why no master branch?
-
-I've received a number of questions about the name of the default branch in this repo. The short answer is: SEO.
-
-Since I moved my content to separate markdown files, GitHub now displays the exact the same content that's on the site. Duplicate content is never good for SEO, and given the popularity of GitHub vs. my site, chances are I'd not appear in the search results at all.  
-Luckily, GitHub only allows indexing the contents of the master branch, thus switching the name to ```dev``` solved the problem.
