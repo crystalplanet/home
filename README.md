@@ -54,5 +54,5 @@ boot production build target
 ```
 
 As you can see, there's really not much to it. Assuming the build goes well, the contents of the ```target``` directory are then uploaded to the server.  
-All of this takes place every time something is pushed to the ```dev``` branch.
+All of this takes place every time something is pushed to the `dev` branch.
 
